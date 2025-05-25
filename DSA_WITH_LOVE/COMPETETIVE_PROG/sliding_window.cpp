@@ -27,26 +27,26 @@ using namespace std;
 
 // problem 1    HINT: BY DEFAULT SUBARRAY MEANS A SMALLER PART AND THAT SMALLER PART HAS TO BE CONTAGIOUS 
 //USING   B R U T E   F O R C E
-int main(){
-    int n, k;
-    cin>>n>>k;
-    int sum=0;
-    vector<int>v(n);
-    vector<int>sub_v;//(n-k+1);
-    make(v);
-    for(int i=0;i<v.size()-k+1;i++){
-        for(int j=0;j<k;j++){
-            sum=sum+v[i+j];
-        }
-        sub_v.push_back(sum);
-        sum=0;
-    }
-    auto max_ment = max_element(sub_v.begin(), sub_v.end());
-    cout << *max_ment<<endl;
-    prnt(sub_v);
+// int main(){
+//     int n, k;
+//     cin>>n>>k;
+//     int sum=0;
+//     vector<int>v(n);
+//     vector<int>sub_v;//(n-k+1);
+//     make(v);
+//     for(int i=0;i<v.size()-k+1;i++){
+//         for(int j=0;j<k;j++){
+//             sum=sum+v[i+j];
+//         }
+//         sub_v.push_back(sum);
+//         sum=0;
+//     }
+//     auto max_ment = max_element(sub_v.begin(), sub_v.end());
+//     cout << *max_ment<<endl;
+//     prnt(sub_v);
     
     
-}
+// }
 // TEST CASES:
 // a)
 // 5 2
@@ -62,7 +62,7 @@ int main(){
 // Which means you're adding new elements to the end of the already allocated vector — not replacing the initial zeros.
 
 
-// 🔴 Efficiency (O(n × k))
+// 🔴 Efficiency (O(n × k)) or (O(N^2))
 // In this method i was recalculating the sum from scratch for every window.
 // If n = 1e5 and k = 1e4, this becomes very slow.
 // Using sliding window to get O(n) time.
@@ -93,3 +93,45 @@ int main(){
 // For each starting index i, I added up k elements from i onward.
 // I stored each of these sums in a vector and finally got the maximum."
 
+//how ever in this method since we are making an extra vector thus space
+//reqd is more we can get a solution with lesser space comp, and same time comp
+//using same logic just the way of writing the code will be different
+
+// int maxi =INT_MIN;
+// for int i=0;i<n;i++{
+//     int sum=0;
+//     for(int j=i;j<k+i-1;j++){
+//         sum+=v[j];
+//     }
+//     maxi=max(maxi, sum);
+// }
+// this is the logic
+
+// C O M I N G   T O   S L I D I N G   W I N D O W   T E C H N I Q U E
+// ADD NEXT TO THE LAST ELEMENT OF THE SUBARRAY &
+// SUBTRACT FIRST ELEMENT OF THE SUBARRAY
+
+int main(){
+    int n ,k;
+    cin>>n>>k;
+    int arr[n];//or i can vector also
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int sum=0;
+    int maxi=INT_MIN;
+    //calc the first window sum
+    for(int i=0;i<k;i++){
+        sum+=arr[i];
+    }
+    maxi=max(maxi, sum);
+    //use another loop to slide windpw one at a time
+    for(int i=k;i<n;i++){//because k is next to the current end point
+        int add_index=i;
+        int remove_index=i-k;
+        sum=sum+arr[add_index]-arr[remove_index];
+        //here you have the sum of next window
+        maxi=max(maxi, sum);
+    }
+    cout<<maxi<<"\n";
+}
