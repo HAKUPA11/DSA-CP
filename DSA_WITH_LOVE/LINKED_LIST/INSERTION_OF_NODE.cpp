@@ -42,11 +42,43 @@ Node* add_node_at_end(Node*head){
 
 }
 
+//F X N   T O   A D D   N O D E   A N Y W H E R E   I N   B E T W E E N
+Node* add_node_somewhere_in_between(Node* head){
+    cout<<"\nFXN TO ADD NODE ANYWHERE IN BETWEEN IS CALLED NOW";
+    int new_num, pos;
+    cout<<"\n write the number you want to insert and the position where you want to insert it";
+    cin>>new_num>>pos;
+    Node* node_to_be_inserted=new Node(new_num);
+    //if node to be inserted at the head
+    if(pos==1){
+        node_to_be_inserted->next=head;
+        head=node_to_be_inserted;
+        return head;
+    }
+
+    int crnt_pos=1;
+    Node* crnt = head;
+    // We must stop at the node just before that position (position - 1) so we can adjust the pointers properly.
+    // For example, to insert at position 3:
+    // We need to stop at position 2 (i.e., current_pos < 2), so that:
+    // newNode->next = current->next;
+    // current->next = newNode;
+    while(crnt_pos< pos-1){
+        //note- "!" is logical NOT & "~" is bit wise NOT
+        crnt=crnt->next;
+        crnt_pos++;
+    }
+
+    node_to_be_inserted->next = crnt->next;
+    crnt->next = node_to_be_inserted;
+    
+    return head;
+}
 //F X N  T O  P R I N T
 void print_ll(Node* head){
     Node* temp = head;
     while(temp!=nullptr){
-        cout<<temp->data;
+        cout<<temp->data<<"( "<<temp->next<<" )"<<"node address-( "<<temp<<" )";
         temp=temp->next;
         if(temp==nullptr)
         break;
@@ -72,7 +104,8 @@ int main(){
     print_ll(head);
     // head = add_node_at_begin(head);
     // print_ll(head);
-    head = add_node_at_end(head);
+    // head = add_node_at_end(head);
+    head = add_node_somewhere_in_between(head);
     print_ll(head);
 }
 
