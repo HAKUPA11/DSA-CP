@@ -10,6 +10,8 @@
 
 
 
+
+
 // LINK:
 // // https://www.geeksforgeeks.org/problems/linked-list-insertion-1587115620/1?page=1&category=Linked%20List&difficulty=Basic&sortBy=submissions
 // PROBLEM: LINKED LIST INSERTION AT THE END
@@ -29,6 +31,9 @@
 //         return head;
 
 
+
+
+
 // LINK:
 // https://www.geeksforgeeks.org/problems/count-nodes-of-linked-list/1?page=1&category=Linked%20List&difficulty=Basic&sortBy=submissions
 // PROBLEM:COUNT LINKED LIST NODES
@@ -41,6 +46,8 @@
     //     }
     //     return cnt;
     // }
+
+
 
 
 
@@ -70,4 +77,36 @@
 //         return new_head;
 //     }
 
-METHOD-2:
+// METHOD-2:
+
+        // Node* prev = NULL;
+        // Node* crnt = head;
+        // Node* front = head->next;
+        // while(crnt!=NULL){
+        //     crnt->next=prev;
+        //     front=crnt->next;
+        //     prev=crnt;
+        //     crnt=front;//to traverse ahead
+        // }
+        // return prev;
+
+
+
+
+        
+// LINK:
+// https://www.geeksforgeeks.org/problems/identical-linked-lists/1?page=1&category=Linked%20List&difficulty=Basic,Easy&sortBy=submissions
+// PROBLEM: IDENTICAL LINKED LISTS
+// SOLN:
+    // bool areIdentical(struct Node *head1, struct Node *head2) {
+    //     // code here
+    //     bool are_ident=1;
+    //     while(head1 && head2){
+    //         if(head1->data!=head2->data){
+    //             are_ident=0;
+    //         }
+    //         head1=head1->next;
+    //         head2=head2->next;
+    //     }
+    //     return are_ident;
+    // }

@@ -114,13 +114,13 @@ using namespace std;
 int main(){
     int n ,k;
     cin>>n>>k;
-    int arr[n];//or i can vector also
+    int arr[n];//or i can use vector also
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
     int sum=0;
     int maxi=INT_MIN;
-    //calc the first window sum
+    //we just have to only ,calc the first window sum and afterwards we just slide the window
     for(int i=0;i<k;i++){
         sum+=arr[i];
     }
@@ -135,3 +135,22 @@ int main(){
     }
     cout<<maxi<<"\n";
 }
+
+
+// H O W    D O E S    S L I D I N G    W I N D O W    P R O B L E M S    L O O K 
+// LIKE
+// 1) FIXED SIZE
+// 2)VARIABLE SIZE( CALLED AS 2 POINTERS) 
+
+// FIXED SIZE WINDOWS
+// these windpws come in the picture when we are supose to deal with 
+// contagious parts of the array which are sub arrays also it might be 
+// possible that you will be given a string, then substring can also be 
+// asked, another type would be -size would be given, another type-calculate
+// from each window
+
+// in the previous questio done all of these checks were checked
+
+// PROBLEM 2:
+// GIVEN AN ARRAY. CALCULATE FIRST NEGATIVE INTEGER OF EACH SUBARAY OF SIXE "K"
+
