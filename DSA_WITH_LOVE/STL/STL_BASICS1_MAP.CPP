@@ -62,9 +62,29 @@ max(maxi, ++mp[c]) compares:
 
 the current maximum frequency stored in maxi, and
 
-the new count of c.*/
+the new count of c.
 
 The maximum of the two is stored back into maxi.
+🔁 Example: s = "ababa"
+Let's walk through this loop:
+
+cpp
+Copy
+Edit
+string s = "ababa";
+map<char, int> mp;
+int maxi = 0;
+
+for (auto c : s)
+    maxi = max(maxi, ++mp[c]);
+Iteration	c	++mp[c] (after increment)	maxi = max(maxi, ++mp[c])
+1	       'a'      	1	                      1
+2	       'b'	        1	                      1
+3	       'a'        	2	                      2
+4	       'b'       	2                         2
+5	       'a'       	3	                      3
+
+At the end, maxi = 3 (because 'a' occurred 3 times).*/
 // we first increased the value and then took the value
 //lets say if we take mp[c]++ then maxi will tak max of maxi and mp[c] , and at the beginning mp[c] would always we empty ie.=0 also maxi =0 initially, therefore always maxi would remain maxi only it wont update
     for(auto c: s)
