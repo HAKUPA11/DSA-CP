@@ -24,6 +24,7 @@ using namespace std;
 
 // }
 
+<<<<<<< HEAD
 // int main(){
 //     // ++a and a++ concepts
 //     // int a=0, b=0;
@@ -41,6 +42,73 @@ using namespace std;
 // //lets say if we take mp[c]++ then maxi will tak max of maxi and mp[c] , and at the beginning mp[c] would always we empty ie.=0 also maxi =0 initially, therefore always maxi would remain maxi only it wont update
 //     for(auto c: s)
 //         if(mp[c]==maxi) cout<<c;
+=======
+int main(){
+    // ++a and a++ concepts
+    // int a=0, b=0;
+    // cout<<a++<<endl<<++b<<endl;
+    // cout<<a;
+    //uncomment them and check once
+    // we usually first increase the freq and then use it therefore we
+    //generally use ++mp[c];
+    //eg:
+    map<char, int>mp;
+    int maxi=0;
+    string s;cin>>s;
+    for(auto c: s ) maxi=max(maxi, ++mp[c]);
+//for(auto c: s) maxi = max(maxi, ++mp[c]); how does this line increments the count of each char also how does it  updates maxi to store the highest frequency found
+/*🧩 1. mp[c]
+This accesses the map mp with key c (a character from string s).
+
+If c is not yet in the map, mp[c] will automatically initialize its value to 0.
+This is a key feature of C++'s std::map.
+
+🧩 2. ++mp[c]
+This increments the value stored at mp[c] (i.e., the frequency of character c).
+
+For example:
+
+First time seeing 'a' → mp['a'] = 0, then ++mp['a'] becomes 1.
+
+Second time → mp['a'] = 1, then ++mp['a'] becomes 2, and so on.
+
+So this part updates the frequency count of character c.
+
+🧩 3. maxi = max(maxi, ++mp[c]);
+++mp[c] returns the new incremented count of character c.
+
+max(maxi, ++mp[c]) compares:
+
+the current maximum frequency stored in maxi, and
+
+the new count of c.
+
+The maximum of the two is stored back into maxi.
+🔁 Example: s = "ababa"
+Let's walk through this loop:
+
+cpp
+Copy
+Edit
+string s = "ababa";
+map<char, int> mp;
+int maxi = 0;
+
+for (auto c : s)
+    maxi = max(maxi, ++mp[c]);
+Iteration	c	++mp[c] (after increment)	maxi = max(maxi, ++mp[c])
+1	       'a'      	1	                      1
+2	       'b'	        1	                      1
+3	       'a'        	2	                      2
+4	       'b'       	2                         2
+5	       'a'       	3	                      3
+
+At the end, maxi = 3 (because 'a' occurred 3 times).*/
+// we first increased the value and then took the value
+//lets say if we take mp[c]++ then maxi will tak max of maxi and mp[c] , and at the beginning mp[c] would always we empty ie.=0 also maxi =0 initially, therefore always maxi would remain maxi only it wont update
+    for(auto c: s)
+        if(mp[c]==maxi) cout<<c;
+>>>>>>> 912a225be06025cd976d52a7b9d64a970083a2ec
 
 // }
 
