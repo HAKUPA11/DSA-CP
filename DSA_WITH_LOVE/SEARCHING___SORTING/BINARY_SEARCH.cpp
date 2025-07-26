@@ -39,3 +39,4 @@
 // but it is also the range/piece of potentiial solutions
 // we will take the middle elementsa each time
 // in this case we already got the middle element which is 2
+
