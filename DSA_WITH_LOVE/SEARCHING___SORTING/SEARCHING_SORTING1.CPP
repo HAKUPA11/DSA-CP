@@ -9,7 +9,7 @@
 // P R E F I X   S U M S
 // suppose i have an array
 // 4 3 5 2 1
-// taking the sum of all prefixes 
+// taking the sum of all prefixes of the array
 // so the prefixes will be
                 // SUM
 // 4 ,             4   
@@ -101,9 +101,9 @@ using namespace std;
 // if at worst case n=1e6 and s = 1e6 then n*s be 1e12
 //which would be too slow
 // now lets say we have the prefix sum with us
-//INDICES  0  1  2  3  4  5  6  7  8  9 
-//N:       1  3  4  7  9  8  0  2  5  6
-//prx sum: 1  4  8  15 24 32 32 34 39 45
+//            INDICES:        0  1  2  3  4  5  6  7  8  9 
+//            N:              1  3  4  7  9  8  0  2  5  6
+//            prx sum:        1  4  8  15 24 32 32 34 39 45
 //now if someone wants to get the sum for [2, 4]
 // which is  4 + 7 + 9
 //then we can just remove 1 + 3 from 24
