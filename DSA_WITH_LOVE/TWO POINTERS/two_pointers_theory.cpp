@@ -1,4 +1,4 @@
-// TWO POINTER
+// TWO POINTERS
 // *The two pointer algorithm is typically used for finding solutions in pairs 
 //these pairts are the pairs where the two pointer are pointing to.
 //eachvariable moves in a single direction, and they only traverse the arraysingle time.
@@ -135,3 +135,20 @@
 
 // ANOTHER EXAMPLE:
 // FIND I, J such that Ai + Aj = K where A and B are sorted arrays
+
+//APPROACH 1 USING brute force however that will be O(N*M) 
+
+//APPOACH 2 solving it using binary search and map ,we can store x-a[i] in map and check if corresponding this value it contains
+//in array B or not and to do this search we will use binary earch
+// for(int i=0;i<n;i++){ // fixing i in the  first array
+// int l=-1, r=m;
+// while(  r-l>1){
+//     int mid=(r+l)/2;
+//     if(a[mid]<=x) l=mid;
+//     else r=mid;
+// }
+// if(l!=-1 && b[l]==x-a[i]) cout<<i<<" "<<l<<endl;
+// }
+
+// this soln is O(NlogM)
+
