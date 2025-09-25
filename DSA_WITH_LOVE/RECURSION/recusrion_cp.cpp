@@ -4,17 +4,17 @@ using namespace std;
 #define prnt(v)  for(auto &i:v) cout<<i<<endl
 #define ll       long long
 
-//print increasing number from 1 to n
+//print increasing number from 1 to n ✅
 
-//print decreasing no.from n to 1
+//print decreasing no.from n to 1  ✅
 
-//print factorial of a number
+//print factorial of a number  ✅
 
-//check if given string is a palindrome or not
+//check if given string is a palindrome or not  ✅
 
-//linear search
+//linear search  ✅
 
-//nth fibonacci number(memoization)
+//nth fibonacci number(memoization)  ✅
 
 //print subsequence
 
@@ -73,18 +73,14 @@ using namespace std;
 
 
 // S O L N   3:
-// int factorial(int i){
-//     int prod=i;
-//     int fact;
-//     if(i==0) fact=fact*1;
-//     else fact=prod*factorial(i-1);
-    
 
+// int fact(int n){
+//     if(n==0) return 1; 
+//     return n * fact(n-1);
 // }
-// int main(){
-//     int N;cin>>N;
-//     int fact=factorial(N);
-//     cout<<fact;
+// int main() {
+//     ios::sync_with_stdio(false); cin.tie(nullptr);
+//     cout<<fact(7);
 // }
 
 //S O L N   4
@@ -102,6 +98,18 @@ using namespace std;
 //     if(check_palindrome(0, str.length()-1, str)) cout<<"yes";
 //     else cout<<"no";
 
+// }
+// ~~~~~~~~~~~~~~~~~~~~~~~~alternate which i later wrote myself```````````````````````````````
+
+// bool palindrome(string n, int l, int r){
+//     if(l>r) return 1;
+//     if(n[l]==n[r]) return palindrome(n, l+1, r-1);
+//     else return false;
+// }
+// int main() {
+//     ios::sync_with_stdio(false); cin.tie(nullptr);
+//     string s; cin>>s;
+//     cout<<palindrome(s, 0, s.length()-1);
 // }
 
 
@@ -124,3 +132,72 @@ int main(){
     if(found(0, 8, ar)) cout<<"element found";
     else cout<<"no";
 }
+
+// ~~~~~~~~~~~~~~~aagey ka code i wrote myself:~~~~~~~~~~~~~~
+// bool linear_search(vector<int>v, int n, int i){
+//     if(i==v.size()) return false;
+//     if(v[i]!=n) return linear_search(v, n, i+1);
+//     else return true;
+// }
+// int main() {
+//     ios::sync_with_stdio(false); cin.tie(nullptr);
+//     vector<int>v(5);
+//     make(v);
+//     int n;cin>>n;
+//     cout<<linear_search(v, n, 0);
+// }
+
+
+
+// SOLN 6 PRINTING nTH FIBONACCI
+
+int FIBO(int n){
+    if(n<=1) return n;// hamara base case hai
+    return (FIBO(n-1)+FIBO(n-2));
+}
+int main() {
+    ios::sync_with_stdio(false); cin.tie(nullptr);
+    int n;cin>>n;
+
+    cout<<FIBO(n);
+}
+// 0 1 1 2 3 5 8 ...
+//recursion tree:
+//             FIBO(4)
+//            /       \
+//       FIBO(3)      FIBO(2)
+//       /    \        /    \
+//  FIBO(2) FIBO(1) FIBO(1) FIBO(0)
+//   /    \
+// FIBO(1) FIBO(0)
+
+// discussion abut the TIME COMPLEXITY:
+// SINCE EACH NODE IS CALLING TWO NODES FURTHER THEREFORE WE WOULD BE 
+//END UP TRAVELLING 2^N NODES/NUMBER THEREFOR THE TC IS
+//O(2^N)
+
+//AND space complexity is the height of the recursive tree which is :
+//O(N)
+
+//SOME MORE DISCUSSION;
+//fr FIBO(2), we have to make recursion tree twice (or would need to calculate it twice )
+// the ideal thing would be to calculate FIBO(2) once and store its value which can be used later on
+// this way we reduce the time complexity from 2^N to O(N):
+// here's is the needed code
+
+// int FIBO(int n, vector<int>& dp) {
+//     if (n <= 1) return n;
+//     if (dp[n] != -1) return dp[n]; // check if already computed and stored
+//     return dp[n] = FIBO(n - 1, dp) + FIBO(n - 2, dp);
+// }
+
+// int main() {
+//     ios::sync_with_stdio(false); cin.tie(nullptr);
+//     int n; cin >> n;
+//     vector<int> dp(n+1, -1); // initialize dp array with -1
+//     cout << FIBO(n, dp);
+// }
+
+// this is what called as ~~~~~~~~~~~~~~~MEMOISATION~~~~~~~~~~~~~
+
+
